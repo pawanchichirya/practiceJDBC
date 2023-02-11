@@ -4,17 +4,17 @@ import java.io.Serializable;
 
 public class Player implements Serializable{
 	private static final long serialVersionUID=1L;
-	private Integer id;
+	private Integer jersyNo;
 	private Integer age;
 	private String name;
 	private String team;
 	
 	
-	public Integer getId() {
-		return id;
+	public Integer getJersyNo() {
+		return jersyNo;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setJersyNo(Integer id) {
+		this.jersyNo = id;
 	}
 	public Integer getAge() {
 		return age;
@@ -36,7 +36,7 @@ public class Player implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Player [id=" + id + ", age=" + age + ", name=" + name + ", team=" + team + "]";
+		return "Player [id=" + jersyNo + ", age=" + age + ", name=" + name + ", team=" + team + "]";
 	}
 
 	
