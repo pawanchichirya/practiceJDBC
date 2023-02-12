@@ -19,7 +19,7 @@ public class JdbcUtil {
 	}
 
 	public static Connection getJdbcConnection() throws SQLException, IOException {
-		HikariConfig config = new HikariConfig("C:\\Users\\Haresh Meghani\\git\\repository\\PracticeCRUD\\src\\com\\test\\properties");
+		HikariConfig config = new HikariConfig("src\\com\\test\\properties\\db.properties");
 		HikariDataSource dataSource = new HikariDataSource(config);
 		return dataSource.getConnection();
 	}

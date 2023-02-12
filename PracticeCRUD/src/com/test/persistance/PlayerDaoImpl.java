@@ -40,7 +40,7 @@ public class PlayerDaoImpl implements IPlayerDao {
 	@Override
 	public Player searchPlayer(Integer jersyNo) {
 		String sqlQuery="select jersyNo,name,age,team from player where jersyNo=?";
-		Player player=new Player();
+		Player player=null;
 		try {
 			connection=JdbcUtil.getJdbcConnection();
 			if(connection!=null) {
@@ -52,7 +52,7 @@ public class PlayerDaoImpl implements IPlayerDao {
 			}
 			if(resultSet!=null) {
 				if(resultSet.next()) {
-					
+					player=new Player();
 					player.setJersyNo(resultSet.getInt(1));
 					player.setName(resultSet.getString(2));
 					player.setAge(resultSet.getInt(3));
@@ -73,10 +73,10 @@ public class PlayerDaoImpl implements IPlayerDao {
 				pstmnt=connection.prepareStatement(sqlQuery);
 			}
 			if(pstmnt!=null) {
-				pstmnt.setInt(1,jersyNo);
-				pstmnt.setString(2,name);
-				pstmnt.setInt(3,age);
-				pstmnt.setString(4,team);
+				pstmnt.setString(1,name);
+				pstmnt.setInt(2,age);
+				pstmnt.setString(3,team);
+				pstmnt.setInt(4,jersyNo);
 				
 				int rowAffected=pstmnt.executeUpdate();
 				if(rowAffected==1)
@@ -103,7 +103,7 @@ public class PlayerDaoImpl implements IPlayerDao {
 				if(rowAffected==1)
 					return "success";
 				else 
-					return "Player with jersy number "+jersyNo+" not found";
+					return "NotFound";
 			}
 		} catch(SQLException | IOException e) {
 			e.getMessage();
